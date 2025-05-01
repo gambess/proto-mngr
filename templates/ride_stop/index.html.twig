@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RideStop index{% endblock %}
+
+{% block body %}
+    <h1>RideStop index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Arrival_time</th>
+                <th>Num_passengers</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ride_stop in ride_stops %}
+            <tr>
+                <td>{{ ride_stop.id }}</td>
+                <td>{{ ride_stop.arrivalTime ? ride_stop.arrivalTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ ride_stop.numPassengers }}</td>
+                <td>
+                    <a href="{{ path('app_ride_stop_show', {'id': ride_stop.id}) }}">show</a>
+                    <a href="{{ path('app_ride_stop_edit', {'id': ride_stop.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ride_stop_new') }}">Create new</a>
+{% endblock %}

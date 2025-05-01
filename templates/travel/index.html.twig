@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Travel index{% endblock %}
+
+{% block body %}
+    <h1>Travel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_passengers</th>
+                <th>Duration</th>
+                <th>Out_time</th>
+                <th>Arrive_time</th>
+                <th>Kilometers</th>
+                <th>Gas_used_liters</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for travel in travel %}
+            <tr>
+                <td>{{ travel.id }}</td>
+                <td>{{ travel.numPassengers }}</td>
+                <td>{{ travel.duration }}</td>
+                <td>{{ travel.outTime ? travel.outTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ travel.arriveTime ? travel.arriveTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ travel.kilometers }}</td>
+                <td>{{ travel.gasUsedLiters }}</td>
+                <td>
+                    <a href="{{ path('app_travel_show', {'id': travel.id}) }}">show</a>
+                    <a href="{{ path('app_travel_edit', {'id': travel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_travel_new') }}">Create new</a>
+{% endblock %}
