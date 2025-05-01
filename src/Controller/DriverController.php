@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/driver')]
+#[Route('/chofer')]
 final class DriverController extends AbstractController
 {
     #[Route(name: 'app_driver_index', methods: ['GET'])]

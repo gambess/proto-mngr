@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/stop')]
+#[Route('/paradero')]
 final class StopController extends AbstractController
 {
     #[Route(name: 'app_stop_index', methods: ['GET'])]

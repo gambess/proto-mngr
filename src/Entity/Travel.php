@@ -31,6 +31,12 @@ class Travel
     #[ORM\Column(nullable: true)]
     private ?float $gas_used_liters = null;
 
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $driverRut = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $stopId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +110,30 @@ class Travel
     public function setGasUsedLiters(?float $gas_used_liters): static
     {
         $this->gas_used_liters = $gas_used_liters;
+
+        return $this;
+    }
+
+    public function getDriverRut(): ?string
+    {
+        return $this->driverRut;
+    }
+
+    public function setDriverRut(?string $driverRut): static
+    {
+        $this->driverRut = $driverRut;
+
+        return $this;
+    }
+
+    public function getStopId(): ?int
+    {
+        return $this->stopId;
+    }
+
+    public function setStopId(?int $stopId): static
+    {
+        $this->stopId = $stopId;
 
         return $this;
     }
